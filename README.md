@@ -1,3 +1,7 @@
+# SimpleAlarmClock Library
+
+Alarm Clock library that uses the real time clock of a common ZS-042 module, aka. DS3231, with a AT24c32N EEprom and CR3032 battery.
+
 ## Welcome to GitHub Pages
 
 You can use the [editor on GitHub](https://github.com/rmorenojr/SimpleAlarmClock/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
