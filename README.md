@@ -25,3 +25,62 @@ Permission is hereby granted, free of charge, to any person obtaining a copy of 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 AT24C32 EEPROM Read and Write byte code copied from AT24Cx Library by Christian Paul. Modified by Ricardo Moreno.hub.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+
+## Properties and Methods
+
+### New structures:
+- DateTime
+- AlarmTime
+
+### CONSTRUCTOR:
+- SimpleAlarmClock(byte _rtc_Address=0x68, byte _eeprom_Address=0x57, bool alarmIntEnabled=true);
+
+### Main Clock Metods:
+- DateTime read();
+- byte write(const DateTime&);
+
+### Main Alarm Methods:
+- AlarmTime readAlarm(byte alarmSelected);
+- byte setAlarm(const AlarmTime&, byte alarmSelected);
+- byte snoozeAlarm(byte alarmSelected, byte SnoozeTime);
+- void armAlarm(byte alarmSelected, bool Enable);
+- void clearAlarms();
+- byte alarmStatus();
+
+### Control Register 0x0e bit fiddlers:
+- byte getCtrlRegister();
+- void setEnableOscillator(bool Enable);
+- void setBatteryBackedSquareWave(bool Enable);
+- void setConvertTemperature();
+- byte setRateSelect(byte Data);
+- void setInterruptCtrl(bool Enable);
+
+### Status Register 0x0f bit fiddlers:
+- byte getStatusRegister();
+- bool getOSFStatus();
+- byte clearOSFStatus();
+- bool getEN32kHz();
+- byte setEN32kHz(bool Enable);
+- bool busy()
+- byte flaggedAlarms();
+
+### Temperature Registers 0x11 and 0x12 methods:
+- byte getTemperature();
+- float getTemperatureFloat();
+
+### Misc Methods:
+- void toggleClockMode();
+- byte calcDow(byte mm, byte dd, uint16_t yyyy);
+- void resetClock(void);
+- void resetAlarm(byte alarmSelected);
+
+### Lower Level methods:
+- byte readByte(byte Address,  byte &dataBuffer);
+- byte readBytes(byte Address, byte dataBuffer[], byte Length);
+- byte getAgingOffset(void);
+- byte setAgingOffset(int changeValue);
+
+### EEProm methods:
+- byte readMem(byte address);
+- byte readMem(byte address, byte dataBuffer[], byte n);
+- byte writeEeprom(byte address, byte dataBuffer);
