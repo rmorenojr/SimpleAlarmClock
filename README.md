@@ -2,40 +2,26 @@
 
 Alarm Clock library that uses the real time clock of a common ZS-042 module, aka. DS3231, with a AT24c32N EEprom and CR3032 battery.
 
-## Welcome to GitHub Pages
+## Information
 
-You can use the [editor on GitHub](https://github.com/rmorenojr/SimpleAlarmClock/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+A library for the **ZS-042** module that has a **DS3231** RTC and **AT24C32** EEPROM. 
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+An easy set of read/write functions or methods for the DS3231 Real Time Clock and Calendar, and the companion AT24C32 EEPROM on common ZS-042 modules.  The EEPROM is used by this library to store alarm settings on registers 0x00 through 0x08 as byte values.
 
-### Markdown
+The remainder of the EEPROM can be used for logging or storage.
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+The EEPROM read and write bytes methods were copied from this Library [The AT24CX Library](https://github.com/cyberp/AT24Cx)
 
-```markdown
-Syntax highlighted code block
+The intent of this library is to manage a basic alarm clock, that includes the display clock and two alarms, typically seen on standard desktop/nightstand alarm clocks.  It should accomidate switching between 12 hour and 24 modes on the fly.  Alarms have four alarm modes: Daily, Weekday, Weekend or Once.  This library assumes that alarm DOW will only be used, and alarm DATE shall not be used. The alarm modes are stored in EEPROM address 0x08.  Snooze option is available for both alarms.
 
-# Header 1
-## Header 2
-### Header 3
+This library also makes the assumption that if the year has been set to 2018 (018) or greater, the RTC clock is probably valid. This approach is used so that during a power cycle (blackout), clock settings saved by the RTC's backup battery will not be reset.
 
-- Bulleted
-- List
+Copyright (C) 2018 Ricardo Moreno Jr.
 
-1. Numbered
-2. List
+Originally inspired by DS3231_Simple by 2016 James Sleeman, this forked version is incompatible with original. However, since a small amount of code is used the following notice is included:
 
-**Bold** and _Italic_ and `Code` text
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
-[Link](url) and ![Image](src)
-```
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/rmorenojr/SimpleAlarmClock/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+AT24C32 EEPROM Read and Write byte code copied from AT24Cx Library by Christian Paul. Modified by Ricardo Moreno.hub.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
